@@ -1,0 +1,2 @@
+INDEX "com.sapdev.db::book_info"
+ON "com.sapdev.db.data::BOOKS"("BOOK_NAME")
