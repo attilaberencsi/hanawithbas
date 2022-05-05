@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="com.sapdev.db.models::BookCube" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="BookCube"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="com.sapdev.db.data::BOOKS">
+    <resourceUri>com.sapdev.db.data::BOOKS</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="BooksProjection" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="BOOK_ID"/>
+      <viewAttribute id="BOOK_NAME"/>
+      <viewAttribute id="DESCRIPTION"/>
+      <viewAttribute id="AUTHOR"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="com.sapdev.db.data::BOOKS"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="BooksProjection">
+  <attributes>
+    <attribute id="BOOK_NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Book Name"/>
+      <keyMapping columnObjectName="BooksProjection" columnName="BOOK_NAME"/>
+    </attribute>
+    <attribute id="DESCRIPTION" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Book Desc"/>
+      <keyMapping columnObjectName="BooksProjection" columnName="DESCRIPTION"/>
+    </attribute>
+    <attribute id="AUTHOR" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Book Author"/>
+      <keyMapping columnObjectName="BooksProjection" columnName="AUTHOR"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="BOOK_ID" order="1" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Book ID"/>
+      <measureMapping columnObjectName="BooksProjection" columnName="BOOK_ID"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+    
+  
+    <shape expanded="false" modelObjectName="BooksProjection" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

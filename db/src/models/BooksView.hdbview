@@ -1,0 +1,3 @@
+VIEW "com.sapdev.db.models::BooksView" AS
+SELECT *
+FROM "com.sapdev.db.models::BookCube"
